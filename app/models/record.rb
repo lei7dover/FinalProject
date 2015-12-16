@@ -1,4 +1,3 @@
 class Record < ActiveRecord::Base
-  #belongs_to :person
-  #has_many :achievements
+  belongs_to :person
 end
