@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  #has_one :organization
+  has_one :organization
 end
