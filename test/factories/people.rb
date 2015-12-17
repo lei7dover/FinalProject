@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :person do
-    first_name "MyString"
-last_name "MyString"
-gender "MyString"
-photo_id "MyString"
+    first_name "bill"
+    last_name "andrews"
+    gender "female"
   end
 
 end
