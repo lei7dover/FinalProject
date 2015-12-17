@@ -8,7 +8,9 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to @person
     else
-      render :action => 'new'
+      respond_to do |format|
+        format.html 
+        format.js {render 'errors'}
     end
   end
 
