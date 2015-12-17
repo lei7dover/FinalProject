@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization= Organization.find(organization_params)
+    @organization= Organization.find(params[:name])
   end
 
   def new
@@ -14,10 +14,9 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization=Organization.new(organization_params)
-    if @organization.save!
+    if @organization.save
       redirect_to @organization
-    else
-      render :action => 'new'
+    
     end
   end
 
