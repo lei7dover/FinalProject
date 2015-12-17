@@ -40,8 +40,12 @@ ActiveRecord::Schema.define(version: 20151215182115) do
     t.integer  "last_active_year"
     t.text     "bio"
     t.string   "sport"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "all_state_1st_team"
+    t.string   "all_state_2nd_team"
+    t.string   "all_state_3rd_team"
+    t.string   "hall_of_fame"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|

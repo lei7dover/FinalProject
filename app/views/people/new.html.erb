@@ -1,0 +1,52 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@person.errors.count, "error") %> prohibited
+        this person from being saved:
+      </h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <%= f.label :gender %>
+    <%= f.text_field :gender %>
+    <%= f.label :photo %>
+    <%= f.text_field :photo%>
+  </div>
+
+  <%= f.fields_for :record do |ff| %>
+    <div>
+      <%= ff.label :induction_year %>
+      <%= ff.text_field :induction_year %>
+      <%= ff.label :first_active_year %>
+      <%= ff.text_field :first_active_year %>
+      <%= ff.label :last_active_year %>
+      <%= ff.text_field :last_active_year %>
+      <%= ff.label :bio %>
+      <%= ff.text_field :bio %>
+      <%= ff.label :all_state_1st_team %>
+      <%= ff.text_field :all_state_1st_team %>
+      <%= ff.label :all_state_2nd_team %>
+      <%= ff.text_field :all_state_2nd_team %>
+      <%= ff.label :all_state_3rd_team %>
+      <%= ff.text_field :all_state_3rd_team %>
+      <%= ff.label :hall_of_fame %>
+      <%= ff.text_field :hall_of_fame %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
