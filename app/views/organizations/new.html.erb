@@ -1,35 +1,36 @@
-<%= form_for(@organization) do |f| %>
-  <% if @organization.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@organization.errors.count, "error") %> prohibited
-        this organization from being saved:
-      </h2>
+<div class = "container">
+  <h2> Organization Information </h2>
+  <%= bootstrap_form_for(@organization) do |f| %>
+    <% if @organization.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@organization.errors.count, "error") %> prohibited
+          this organization from being saved:
+        </h2>
 
-      <ul>
-      <% @orgnization.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @orgnization.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class = "container">
+    <div>
+      <%= f.text_field :name %>
+      <%= f.text_field :street %>
+      <%= f.text_field :city %>
+      <%= f.text_field :state %>
+      <%= f.text_field :zip %><br>
+      <h5> Upload a logo for your organization</h5>
+      <%= f.attachment_field :logo %>
+    </div>
+    <br><br>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.label :logo %>
-    <%= f.text_field :logo %>
-    <%= f.label :street %>
-    <%= f.text_field :street %>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-    <%= f.label :zip %>
-    <%= f.text_field :zip %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

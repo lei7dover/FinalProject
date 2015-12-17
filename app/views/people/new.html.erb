@@ -1,52 +1,50 @@
-<%= form_for(@person) do |f| %>
-  <% if @person.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@person.errors.count, "error") %> prohibited
-        this person from being saved:
-      </h2>
+<div class = "container">
+  <h2> Athlete Information </h2>
+    <h5> If the athlete participated in more than one sport please complete multiple records</h5>
+  <%= bootstrap_form_for(@person) do |f| %>
+    <% if @person.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@person.errors.count, "error") %> prohibited
+          this person from being saved:
+        </h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class = "container">
+      <div>
+        <%= f.text_field :first_name %>
+        <%= f.text_field :last_name, placeholder: "Maiden Name if currently married" %>
+        <h5>Gender</h5>
+        <%= f.radio_button :gender, "male", label: "Male", inline: true %>
+        <%= f.radio_button :gender, "female", label: "Female", inline: true %><br>
+        <br><%= f.attachment_field :photo %>
+      </div><br>
+
+      <h3>Record Information(Per Sport)</h3>
+      <%= f.fields_for :record do |ff| %>
+        <div>
+          <%= ff.select :sport, [['Basketball','basketball'],['Football','football'],['Baseball','baseball'],['Soccer', 'soccer'],['Softball','softball'],['Volleyball','volleyball']] %>
+          <%= ff.date_field :induction_year %>
+          <%= ff.date_field :first_active_year %>
+          <%= ff.date_field :last_active_year %>
+          <%= ff.text_area :bio %>
+          <h5>Select <strong>ALL</strong> the achievements <%=@person.first_name%> received in the chosen sport. </h5>
+          <%= ff.check_box :all_state_1st_team %>
+          <%= ff.check_box :all_state_2nd_team %>
+          <%= ff.check_box :all_state_3rd_team %>
+          <%= ff.check_box :hall_of_fame %>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
-    <%= f.label :photo %>
-    <%= f.text_field :photo%>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
   </div>
-
-  <%= f.fields_for :record do |ff| %>
-    <div>
-      <%= ff.label :induction_year %>
-      <%= ff.text_field :induction_year %>
-      <%= ff.label :first_active_year %>
-      <%= ff.text_field :first_active_year %>
-      <%= ff.label :last_active_year %>
-      <%= ff.text_field :last_active_year %>
-      <%= ff.label :bio %>
-      <%= ff.text_field :bio %>
-      <%= ff.label :all_state_1st_team %>
-      <%= ff.text_field :all_state_1st_team %>
-      <%= ff.label :all_state_2nd_team %>
-      <%= ff.text_field :all_state_2nd_team %>
-      <%= ff.label :all_state_3rd_team %>
-      <%= ff.text_field :all_state_3rd_team %>
-      <%= ff.label :hall_of_fame %>
-      <%= ff.text_field :hall_of_fame %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

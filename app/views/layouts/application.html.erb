@@ -22,7 +22,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 </head>
 
 <body>
@@ -46,16 +46,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                      <%= link_to "About".html_safe, organizations_path%>
                     </li>
                     <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    <li>
-                      <a href="#">SEARCH <span id="magnify" class= "glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                      <a href="#">Search <span id="magnify" class= "glyphicon glyphicon-search" aria-hidden="true"></span></a>
                     </li>
                 </ul>
             </div>
