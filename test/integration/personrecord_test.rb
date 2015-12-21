@@ -12,18 +12,18 @@ class PersonRecordTest < ActionDispatch::IntegrationTest
     user.password_confirmation = password
     user.save!
     visit(new_person_path)
-    fill_in('First Name', :with => person.first_name)
-    fill_in('Last Name', :with => person.last_name)
+    fill_in('First name', :with => "Billy")
+    fill_in('Last name', :with => "Andrews")
     choose("Male")
-    attach_file('Image', '/path/to/image.jpg')
+    attach_file('person_photo', 'test/scottandlauren.png')
     select('Basketball', :from => 'Sport')
-    fill_in("Induction Year", :with => person.induction_year)
-    fill_in("First Active Year", :with => person.first_active_year)
-    fill_in("Last Active Year", :with => person.last_active_year)
-    check("All State 1st Team")
+    select('1989', :from => 'Induction year')
+    select('1987', :from => 'First active year')
+    select('1989', :from => 'Last active year')
+    check("All state 1st team")
     check("Hall of fame")
     click_on("Create Person")
-    assert current_url== person_path, "Person and record were not created"
+    assert current_path== person_path(Person.last.id), "Person and record were not created"
   end
 
 end

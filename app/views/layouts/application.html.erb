@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Athletic Records</title>
+    <title>TrophyCase</title>
 
     <!-- Bootstrap Core CSS -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -46,11 +46,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                      <%= link_to "About".html_safe, organizations_path%>
-                    </li>
-                    <li>
                       <a href="#">Search <span id="magnify" class= "glyphicon glyphicon-search" aria-hidden="true"></span></a>
                     </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -59,12 +57,32 @@
     </nav>
     <%= yield %>
     <!-- Page Content -->
+
     <div class = "container">
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2015</p>
+                    <nav id="navbar-bottom" class = "navbar navbar-default navbar-fixed-bottom navbar-right">
+                      <div class= "container">
+
+                          <% if @current_user %>
+                          <p class = "navbar-text navbar-right" > <%= @current_user.name %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %>
+                        </p>
+                          <% else %>
+                        <p class = "navbar-text navbar-right">
+                          <%= link_to "Admin Log In", new_user_session_path%>
+                        </p>
+                        <p class = "navbar-text navbar-right">
+                          <%= link_to "Admin Sign Up", new_user_path %>
+                          <% end %>
+                        </p>
+                        <p class = "navbar-text navbar-right"><%=link_to("Google", "http://www.google.com")%></p>
+                        <p class = "navbar-text navbar-right"><%= link_to("Wastebits", "http://www.wastebits.com")%></p>
+                        <p class = "navbar-text navbar-right"><%= link_to("ESPN", "http://www.espn.com")%></p>
+                        <p id="items" class = "navbar-text navbar-left">Copyright &copy; TrophyCase 2015, All Rights Reserved</p>
+                      </div>
+                    </nav>
                 </div>
             </div>
         </footer>

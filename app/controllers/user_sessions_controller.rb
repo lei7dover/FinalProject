@@ -8,13 +8,10 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      respond_to do |format|
-        format.js { }
-      end
+      flash[:alert]= "Login Sucessful!"
+      redirect_to root_url
     else
-      respond_to do |format|
-          format.js {render 'errors'}
-        end
+      render :action => :new
     end
   end
 
@@ -23,5 +20,5 @@ class UserSessionsController < ApplicationController
     flash[:alert] = "Logout successful!"
     redirect_to root_url
   end
-  
+
 end
