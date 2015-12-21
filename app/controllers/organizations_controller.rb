@@ -2,6 +2,8 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
+    @organization= current_user.organization
+    @people = Person.all
   end
 
   def show
@@ -24,7 +26,7 @@ class OrganizationsController < ApplicationController
   private
 
   def organization_params
-  params.require(:organization).permit(:logo, :street, :city, :state, :zip, :name)
+  params.require(:organization).permit(:logo, :street, :city, :state, :zip, :name, :phone_number, :org_photo)
   end
 
 end
