@@ -9,7 +9,7 @@
         </h2>
 
         <ul>
-        <% @orgnization.errors.full_messages.each do |msg| %>
+        <% @organization.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -25,6 +25,8 @@
       <%= f.text_field :zip %><br>
       <h5> Upload a logo for your organization</h5>
       <%= f.attachment_field :logo %>
+      <h5> Upload another photo for your organization's page</h5>
+      <%= f.attachment_field :org_photo %>
     </div>
     <br><br>
 

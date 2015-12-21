@@ -10,7 +10,7 @@
         </h2>
 
         <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% @person.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -27,7 +27,7 @@
       </div><br>
 
       <h3>Record Information(Per Sport)</h3>
-      <%= f.fields_for :record do |ff| %>
+      <%= f.fields_for :records do |ff| %>
         <div>
           <%= ff.select :sport, [['Basketball','basketball'],['Football','football'],['Baseball','baseball'],['Soccer', 'soccer'],['Softball','softball'],['Volleyball','volleyball']], { include_blank: true } %>
           <%= ff.select :induction_year, (100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true } %>

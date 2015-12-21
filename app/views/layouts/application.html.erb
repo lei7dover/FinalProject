@@ -38,10 +38,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <img src="http://placehold.it/150x50&text=Logo" alt="#">
-                </a>
-              <!--<%=link_to image_tag(@organization, class:"img-responsive"), "#{@organization}" %>-->
+
+                     <% if @organization %>
+                    <%= link_to image_tag(@organization.logo_url,:class => "img-responsive navbar-brand"), root_path%>
+                    <% end %>
+
+
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -80,10 +82,7 @@
                           <%= link_to "Admin Sign Up", new_user_path %>
                           <% end %>
                         </p>
-                        <p class = "navbar-text navbar-right"><%=link_to("Google", "http://www.google.com")%></p>
-                        <p class = "navbar-text navbar-right"><%= link_to("Wastebits", "http://www.wastebits.com")%></p>
-                        <p class = "navbar-text navbar-right"><%= link_to("ESPN", "http://www.espn.com")%></p>
-                        <p id="items" class = "navbar-text navbar-left">Copyright &copy; TrophyCase 2015, All Rights Reserved</p>
+                        <p class = "navbar-text navbar-left">Copyright &copy; TrophyCase 2015, All Rights Reserved</p>
                       </div>
                     </nav>
                 </div>

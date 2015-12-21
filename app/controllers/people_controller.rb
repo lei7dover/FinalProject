@@ -1,4 +1,9 @@
 class PeopleController < ApplicationController
+
+  def index
+    @people = Person.all
+  end
+  
   def new
     @person= Person.new
     @record = @person.records.build
@@ -6,12 +11,11 @@ class PeopleController < ApplicationController
 
   def create
     @person=Person.new(person_params)
-    #@record=Record.new(record_params)
     if @person.save
       redirect_to @person
     else
       respond_to do |format|
-        format.html
+        format.html  { render :new }
         format.js {render 'errors'}
       end
     end
@@ -39,11 +43,7 @@ class PeopleController < ApplicationController
   private
 
   def person_params
-  params.require(:person).permit(:first_name, :last_name, :gender, :photo, record_attributes:[:first_active_year, :last_active_year, :hall_of_fame, :all_state_1st_team,:all_state_2nd_team, :all_state_3rd_team, :induction_year, :bio])
+  params.require(:person).permit(:first_name, :last_name, :gender, :photo, records_attributes:[:id, :first_active_year, :last_active_year, :hall_of_fame, :all_state_1st_team,:all_state_2nd_team, :all_state_3rd_team, :induction_year, :sport, :bio])
   end
-
-  #def record_params
-  #params.require(:record).permit(:first_active_year, :last_active_year, :hall_of_fame, :all_state_1st_team,:all_state_2nd_team, :all_state_3rd_team, :induction_year, :bio)
-  #end
 
 end
