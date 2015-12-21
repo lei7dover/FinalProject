@@ -1,11 +1,10 @@
 FactoryGirl.define do
   factory :organization do
-    logo ""
-street "MyString"
-city "MyString"
-state "MyString"
-zip "MyString"
-name "MyString"
+    name "Dover High School"
+    street "123 walnut st"
+    city "Dover"
+    state "ohio"
+    zip "44622"
   end
 
 end

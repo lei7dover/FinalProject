@@ -5,7 +5,8 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization= Organization.find(params[:name])
+    @organization= Organization.find(params[:id])
+    @organizations= Organization.all
   end
 
   def new
@@ -16,7 +17,7 @@ class OrganizationsController < ApplicationController
     @organization=Organization.new(organization_params)
     if @organization.save
       redirect_to @organization
-    
+
     end
   end
 
