@@ -3,15 +3,16 @@
     <!-- Heading Row -->
     <div class="row">
         <div class="col-md-8">
+          <!--<%= image_tag(@organization.logo_id) %>-->
             <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
         </div>
         <!-- /.col-md-8 -->
         <div class="col-md-4">
-            <h1>Organization Name</h1>
-            <p>Address:</p>
-            <p>Phone:    </p>
-            <a class="btn btn-primary btn-lg" href="#">TEXT</a>
+          <%@organizations.each do |o| %>
+            <h1><%=o.name%></h1>
+            <p>Address: <%=o.street %> <%= o.city %> <%= o.state %> <%= o.zip %></p>
         </div>
+        <% end %>
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
@@ -19,14 +20,14 @@
     <hr>
 
     <!-- Call to Action Well -->
-    <div class="row">
+    <!--<div class="row">
         <div class="col-lg-12">
             <div class="well text-center">
                 Check out our athletic accomplishments!
             </div>
-        </div>
+        </div>-->
         <!-- /.col-lg-12 -->
-    </div>
+  <!--  </div>-->
     <!-- /.row -->
 
     <!-- Content Row -->

@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   def new
     @person= Person.new
+    @record = @person.records.build
   end
 
   def create
@@ -38,7 +39,7 @@ class PeopleController < ApplicationController
   private
 
   def person_params
-  params.require(:person).permit(:first_name, :last_name, :gender, :photo)
+  params.require(:person).permit(:first_name, :last_name, :gender, :photo, record_attributes:[:first_active_year, :last_active_year, :hall_of_fame, :all_state_1st_team,:all_state_2nd_team, :all_state_3rd_team, :induction_year, :bio])
   end
 
   #def record_params
