@@ -1,0 +1,7 @@
+<div class = "container">
+<% @people.each do |p| %>
+<div class = "col-md-3">
+    <p><%= link_to "#{p.first_name}".html_safe, "#{p.photo}" %> <%= p.last_name %></div><div class = "col-md-1"><%= p.gender %><p></div>
+    <div class = "col-md-7"><p> <%= p.photo %></p></div><br>
+      <% end %>
+</div>

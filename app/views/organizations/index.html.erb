@@ -7,11 +7,11 @@
         </div>
         <!-- /.col-md-8 -->
         <div class="col-md-4">
-            <h1>Organization Name</h1>
-            <p>Address:</p>
-            <p>Phone:    </p>
-            <a class="btn btn-primary btn-lg" href="#">Google Map image</a>
+          <%@organizations.each do |o| %>
+            <h1><%=o.name%></h1>
+            <p>Address: <%=o.street %> <%= o.city %> <%= o.state %> <%= o.zip %></p>
         </div>
+        <% end %>
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
@@ -33,23 +33,23 @@
     <div class="row">
       <h3>Select the option by which you'd like to find the athletic record:</h3>
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="#">By Sport</a>
+            <a class="btn btn-default btn-success " href="/people">By Sport</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="#">Hall of Famers</a>
+            <a class="btn btn-default btn-success" href="/people">Hall of Famers</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="#">Achievements</a>
+            <a class="btn btn-default btn-success " href="/people">Achievements</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="#">By Year</a>
+            <a class="btn btn-default btn-success" href="/people">By Year</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="#">Last Name A-Z</a>
+            <a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>
         </div>
         <!-- /.col-md-4 -->
     </div>
