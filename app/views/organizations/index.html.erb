@@ -3,17 +3,14 @@
     <!-- Heading Row -->
     <div class="row">
         <div class="col-md-8">
-            <% @organizations.each do |org| %>
-            <%= image_tag(org.logo_url, :class => "img-responsive") %>
-            <% end  %>
+            <%= image_tag(@organization.org_photo_url, :class => "img-responsive") %>
         </div>
         <!-- /.col-md-8 -->
         <div class="col-md-4">
-          <%@organizations.each do |o| %>
-            <h1><%=o.name%></h1>
-            <p>Address: <%=o.street %> <%= o.city %> <%= o.state %> <%= o.zip %></p>
+            <h1><%=@organization.name %></h1>
+            <p>Address: <%=@organization.street %> <%= @organization.city %> <%= @organization.state %> <%= @organization.zip %></p>
+            <p>Phone Number: <%= @organization.phone_number %> </p>
         </div>
-        <% end %>
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
@@ -32,8 +29,8 @@
     <!-- /.row -->
 
     <!-- Content Row -->
-    <div class="row">
-      <h3>Select the option by which you'd like to find the athletic record:</h3>
+    <div class="row text-center">
+      <h3 class= "text-center">Search TrophyCase</h3><br>
         <div class="col-md-2">
             <a class="btn btn-default btn-success " href="/people">By Sport</a>
         </div>
@@ -54,6 +51,6 @@
             <a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>
         </div>
         <!-- /.col-md-4 -->
-    </div>
+    </div><br><br>
     <!-- /.row -->
 </div>

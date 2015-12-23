@@ -40,7 +40,9 @@
                 </button>
 
                      <% if @organization %>
-                    <%= link_to image_tag(@organization.logo_url,:class => "img-responsive navbar-brand"), root_path%>
+                      <%= link_to image_tag(@organization.logo_url,:class => "navbar-brand"), root_path%>
+                      <% else %>
+                      <%= link_to image_tag(@organization, :class => " navbar-brand"), root_path %>
                     <% end %>
 
 
@@ -49,7 +51,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                      <a href="#">Search <span id="magnify" class= "glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                      <a href="#">Search <span id="magnify" class= "glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <input name="search" type="search" value="Enter your search here" /></a>
+                    </li>
+                    <li id= "title">
+                      <h3> <strong>TrophyCase</strong></h3>
                     </li>
 
                 </ul>
@@ -70,10 +76,14 @@
                       <div class= "container">
 
                           <% if @current_user %>
-                          <p class = "navbar-text navbar-right" > <%= @current_user.name %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %>
+                          <p class = "navbar-text navbar-right" > <%= @current_user.name.titleize %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %>
                         </p>
                         <p class = "navbar-text navbar-right" > <%= link_to "Add Person & Record", new_person_path(@current_user) %>
                       </p>
+                      <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path(@current_user) %>
+                    </p>
+                    <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@current_user) %>
+                  </p>
                           <% else %>
                         <p class = "navbar-text navbar-right">
                           <%= link_to "Admin Log In", new_user_session_path%>

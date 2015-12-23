@@ -3,16 +3,16 @@
     <!-- Heading Row -->
     <div class="row">
         <div class="col-md-8">
-          <!--<%= image_tag(@organization.logo_id) %>-->
-            <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
+              <%= image_tag(@organization.org_photo_url, :class => "img-responsive") %>
         </div>
         <!-- /.col-md-8 -->
         <div class="col-md-4">
-          <%@organizations.each do |o| %>
-            <h1><%=o.name%></h1>
-            <p>Address: <%=o.street %> <%= o.city %> <%= o.state %> <%= o.zip %></p>
+
+            <h1><%=@organization.name%></h1>
+            <p>Address: <%=@organization.street %> <%= @organization.city %> <%= @organization.state %> <%= @organization.zip %></p>
+            <p>Phone Number <%= @organization.phone_number %></p>
         </div>
-        <% end %>
+
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
@@ -31,28 +31,28 @@
     <!-- /.row -->
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row text-center">
       <h3>Select the option by which you'd like to find the athletic record:</h3>
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="/people">By Sport</a>
+            <a class="btn btn-default btn-success " href="/people">By Sport</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="/people">Hall of Famers</a>
+            <a class="btn btn-default btn-success" href="/people">Hall of Famers</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="/people">Achievements</a>
+            <a class="btn btn-default btn-success " href="/people">Achievements</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="/people">By Year</a>
+            <a class="btn btn-default btn-success" href="/people">By Year</a>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-2">
-            <a class="btn btn-default btn-primary btn-large" href="/people">Last Name A-Z</a>
+            <a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>
         </div>
         <!-- /.col-md-4 -->
-    </div>
+    </div><br><br>
     <!-- /.row -->
 </div>

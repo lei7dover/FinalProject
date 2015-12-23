@@ -1,5 +1,5 @@
 <div class = "container">
-  <h1>Sign Up to adminster your own organization's athletic records </h1>
+  <h1>Administrator Sign Up</h1>
   <%= bootstrap_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -18,6 +18,8 @@
   <%= f.password_field :password, :placeholder => "Type your password..." %><br />
   <br />
   <%= f.password_field :password_confirmation, :placeholder => "Please re-type your password..." %><br />
+
+
   <%= f.submit "Sign Up" %>
   <% end %>
 </div>

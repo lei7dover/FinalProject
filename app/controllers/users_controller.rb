@@ -8,12 +8,14 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @organization=Organization.new
   end
 
   def create
     @user = User.new(user_params)
+    Rails.logger.info "in create"
     if @user.save
-        redirect_to root_url
+        redirect_to new_organization_path
     else
       render :action => :new
 
