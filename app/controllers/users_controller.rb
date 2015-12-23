@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
+  before_action :require_no_user, only: [:new, :create]
   before_filter :set_user, only: [:show, :edit, :update]
 
   def index
@@ -8,12 +9,14 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @organization=Organization.new
   end
 
   def create
     @user = User.new(user_params)
+    Rails.logger.info "in create"
     if @user.save
-        redirect_to root_url
+        redirect_to new_organization_path
     else
       render :action => :new
 

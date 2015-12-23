@@ -1,15 +1,20 @@
 class PeopleController < ApplicationController
+  before_action :require_user, only: [:new,:create, :edit, :update, :destroy]
 
   def index
     @people = Person.all
+    @records=Record.all
+    @organization = current_user.organization
   end
-  
+
   def new
     @person= Person.new
     @record = @person.records.build
+    @organization = current_user.organization
   end
 
   def create
+    @organization=current_user.organization
     @person=Person.new(person_params)
     if @person.save
       redirect_to @person
@@ -23,11 +28,18 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
+    #  Rails.logger.info @person.records
+    #  Rails.logger.info @person.records.count
+    if @person.records.count == 0
+      @record= @person.records.build
+    end
+    @organization=current_user.organization
+    render :new
   end
 
   def update
     @person= Person.find(params[:id])
-    if @person.update(params[:person])
+    if @person.update(person_params)
       redirect_to @person
     else
       render :action => 'edit'
@@ -38,6 +50,7 @@ class PeopleController < ApplicationController
     @person= Person.find(params[:id])
     @people= Person.all
     @records = Record.all
+    @organization=current_user.organization
   end
 
   private

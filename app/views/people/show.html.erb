@@ -1,8 +1,7 @@
 <div class = "container">
-<% @people.each do |p| %>
-<%= p.first_name%> <%= p.last_name %>
-<% @records.each do |r| %>
+
+<%= @person.first_name%> <%= @person.last_name %>
+<% @person.records.each do |r| %>
 <%= r.sport %>
-<% end %>
 <% end %>
 </div>

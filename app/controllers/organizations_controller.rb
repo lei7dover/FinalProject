@@ -1,14 +1,32 @@
 class OrganizationsController < ApplicationController
+  before_action :require_user, only: [:new,:create, :edit, :update, :destroy]
 
   def index
     @organizations = Organization.all
-    @organization= current_user.organization
+    #if @organization == nil
+      Rails.logger.info "organization.nil"
+      #@organization = Organization.new
+    #end
+    #if current_user
+    #  @organization= current_user.organization
+      #Rails.logger.info current_user
+    #else
+      #@organization= Organization.new
+    #end
     @people = Person.all
   end
 
   def show
-    @organization= Organization.find(params[:id])
-    @organizations= Organization.all
+    #if @organization == nil
+      #@organization = Organization.new
+    #end
+      #if current_user
+      #@organization= current_user.organization
+      #else
+      #@organization= Organization.new
+      #end
+    @organization= Organization.find_by user_id: @current_user.id
+    #@organizations= Organization.all
   end
 
   def new
@@ -17,9 +35,25 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization=Organization.new(organization_params)
+    #@organization = current_user.organization
+    @organization.user_id = current_user.id
     if @organization.save
+    #
       redirect_to @organization
+    end
+  end
 
+  def edit
+    @organization= Organization.find_by user_id: @current_user.id
+    render :new
+  end
+
+  def update
+    @organization= Organization.find(params[:id])
+    if @organization.update(organization_params)
+      redirect_to @organization
+    else
+      render :action => 'edit'
     end
   end
 
