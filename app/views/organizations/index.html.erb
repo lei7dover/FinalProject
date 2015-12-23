@@ -2,20 +2,71 @@
 
     <!-- Heading Row -->
     <div class="row">
-        <div class="col-md-8">
-            <%= image_tag(@organization.org_photo_url, :class => "img-responsive") %>
+      <div class = "col-xs-12">
+        <h1 class= "text-center"> About TrophyCase</h1>
+        <div class = "col-xs-4">
+        <h4>Problems TrophyCase helps to solve:</h6>
+        <ul>
+          <li> Vast amounts of historical athletic data</li>
+          <li>Endless future data</li>
+          <li>Limited accessibility to data</li>
+          <li>Lack of display space</li>
+          <li>Organization of data</li>
+          <li>No room for details</li>
+          <li>Pictures age</li>
+          <li>Takes up physical space</li>
+          <li>Requires maintenance & upkeep</li>
+          <li>Not everything can be displayed</li>
+        </ul>
         </div>
+        <div class = "col-xs-4">
+        <h4>What's the value of TrophyCase?</h6>
+          <h5>Displays:</h5>
+        <ul>
+          <li>Complete history of school/town’s athletics program </li>
+          <li>All who were involved including their accomplishments </li>
+          <li>Information is presented in a neat organized format  </li>
+          <li>Global Access: Available to anyone, anywhere and at any time</li>
+        </ul>
+        </div>
+        <div class = "col-xs-4">
+        <h4>Who does TrophyCase serve?</h6>
+        <ul>
+          <li>High schools </li>
+          <li>Colleges</li>
+          <li>Newspapers</li>
+          <li>City/Towns</li>
+        </ul>
+        </div>
+      </div>
+
+      <!--<div class= "row">-->
+        <!--<div class = "col-xs-12">-->
+          <!--link_to image_tag(""), "#{o.website}".html.safe) -->
+        <!--</div>-->
+
+      </div>
+<br><br>
+    <div class="row">
+      <div class = "col-xs-12">
+        <h3 class = "text-center"> Current Users of TrophyCase </h3>
+      </div>
+        <!--<div class="col-md-8">-->
+          <% @organizations.each do |organization| %>
+            <!--<%= image_tag(organization.org_photo_url, :class => "img-responsive") %>-->
+        <!--</div>-->
         <!-- /.col-md-8 -->
         <div class="col-md-4">
-            <h1><%=@organization.name %></h1>
-            <p>Address: <%=@organization.street %> <%= @organization.city %> <%= @organization.state %> <%= @organization.zip %></p>
-            <p>Phone Number: <%= @organization.phone_number %> </p>
+            <h4><%=organization.name %></h4>
+            <p>Address: <%=organization.street %> <%= organization.city %> <%= organization.state %> <%= organization.zip %></p>
+            <p>Phone Number: <%= organization.phone_number %> </p>
         </div>
+        <% end %>
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
 
-    <hr>
+
 
     <!-- Call to Action Well -->
     <!--<div class="row">
@@ -29,28 +80,28 @@
     <!-- /.row -->
 
     <!-- Content Row -->
-    <div class="row text-center">
+    <!--<div class="row text-center">
       <h3 class= "text-center">Search TrophyCase</h3><br>
         <div class="col-md-2">
             <a class="btn btn-default btn-success " href="/people">By Sport</a>
-        </div>
+        </div>-->
         <!-- /.col-md-4 -->
-        <div class="col-md-2">
+      <!--  <div class="col-md-2">
             <a class="btn btn-default btn-success" href="/people">Hall of Famers</a>
-        </div>
+        </div>-->
         <!-- /.col-md-4 -->
-        <div class="col-md-2">
+        <!--<div class="col-md-2">
             <a class="btn btn-default btn-success " href="/people">Achievements</a>
-        </div>
+        </div>-->
         <!-- /.col-md-4 -->
-        <div class="col-md-2">
+        <!--<div class="col-md-2">
             <a class="btn btn-default btn-success" href="/people">By Year</a>
-        </div>
+        </div>-->
         <!-- /.col-md-4 -->
-        <div class="col-md-2">
+        <!--<div class="col-md-2">
             <a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>
-        </div>
+        </div>-->
         <!-- /.col-md-4 -->
-    </div><br><br>
+    <!--</div><br><br>-->
     <!-- /.row -->
 </div>
