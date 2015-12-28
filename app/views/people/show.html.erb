@@ -1,7 +1,39 @@
 <div class = "container">
+  <br>
+  <div class = "col-xs-6">
+    <h3><%= @person.first_name%> <%= @person.last_name %></h3>
+      <% @person.records.each do |r| %>
+      <ul>
+        <li>
+          <h4>Sport:<%= r.sport.titleize %></h4>
+        </li>
+        <li>
+          <h4>Bio: <%= r.bio.titleize %></h4>
+        </li>
+        <li>
+          <h4>Inducted into Hall of Fame: <%= r.induction_year %></h4>
+        </li>
+        <li>
+          <h4>Participated: <%= r.first_active_year%>-<%= r.last_active_year%></h4>
+        </li>
+        <li>
+          <h4>Achievements: <%= r.hall_of_fame.titleize %><%= r.all_state_1st_team%><%= r.all_state_2nd_team %><%= r.all_state_3rd_team %></h4>
+        </li>
+      </ul>
+      <% end %>
+      <div class = "row">
+        <div class = "col-xs-4">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=SHAREMESSAGE" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Share to Facebook</a><br>
+        </div>
+        <div class = "col-xs-4">
+      <% if current_user %>
+      <%= link_to "Edit this Person", edit_person_path(@person) %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+<div class = "col-xs-3">
+<%= image_tag(@person.photo_url, class: "img-responsive") %>
+</div>
 
-<%= @person.first_name%> <%= @person.last_name %>
-<% @person.records.each do |r| %>
-<%= r.sport %>
-<% end %>
 </div>

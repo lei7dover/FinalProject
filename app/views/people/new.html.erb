@@ -25,25 +25,14 @@
         <%= f.radio_button :gender, "female", label: "Female", inline: true %><br>
         <br><%= f.attachment_field :photo %>
       </div><br>
-
+      <div class = "records-container">
       <h3>Record Information(Per Sport)</h3>
       <%= f.fields_for :records do |ff| %>
-        <div>
-          <%= ff.select :sport, [['Basketball','basketball'],['Football','football'],['Baseball','baseball'],['Soccer', 'soccer'],['Softball','softball'],['Volleyball','volleyball']], { include_blank: true } %>
-          <%= ff.select :induction_year, (100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true } %>
-          <%= ff.select :first_active_year,(100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true } %>
-          <%= ff.select :last_active_year, (100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true } %>
-          <%= ff.text_area :bio %>
-          <h5>Select <strong>ALL</strong> the achievements <%=@person.first_name%> received in the chosen sport. </h5>
-          <%= ff.check_box :all_state_1st_team %>
-          <%= ff.check_box :all_state_2nd_team %>
-          <%= ff.check_box :all_state_3rd_team %>
-          <%= ff.check_box :hall_of_fame %>
-        </div>
 
-
+      <%= render :partial => "records/form", locals: {ff: ff} %>
+    </div>
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Create a person with records", class: "btn btn-primary btn-large" %>
       </div>
         <% end %>
     <% end %>
