@@ -1,4 +1,4 @@
-<div class = "container">
+<div class = "container" id= "all-container">
   <h2> Athlete Information </h2>
     <h5> If the athlete participated in more than one sport please complete multiple records</h5>
   <%= bootstrap_form_for(@person) do |f| %>
@@ -25,13 +25,17 @@
         <%= f.radio_button :gender, "female", label: "Female", inline: true %><br>
         <br><%= f.attachment_field :photo %>
       </div><br>
-      <div class = "records-container">
       <h3>Record Information(Per Sport)</h3>
+      <div class = "records-container">
       <%= f.fields_for :records do |ff| %>
 
       <%= render :partial => "records/form", locals: {ff: ff} %>
     </div>
+      <div>
+
+    </div><br>
       <div class="actions">
+        <%= link_to 'Add another record', '#', :id=> "button" ,:class => "btn btn-success"%>
         <%= f.submit "Create a person with records", class: "btn btn-primary btn-large" %>
       </div>
         <% end %>
