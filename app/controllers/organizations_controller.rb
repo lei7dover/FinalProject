@@ -3,6 +3,12 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
+    if current_user 
+       if current_user.organization
+          @organization = Organization.find_by user_id: @current_user.id
+          render :show
+       end
+    end
     #if @organization == nil
       Rails.logger.info "organization.nil"
       #@organization = Organization.new
@@ -26,6 +32,7 @@ class OrganizationsController < ApplicationController
       #@organization= Organization.new
       #end
     @organization= Organization.find_by user_id: @current_user.id
+    @people = Person.all
     #@organizations= Organization.all
   end
 

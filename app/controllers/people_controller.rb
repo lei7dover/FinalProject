@@ -2,9 +2,19 @@ class PeopleController < ApplicationController
   before_action :require_user, only: [:new,:create, :edit, :update, :destroy]
 
   def index
-    @people = Person.all
+    #@people = Person.all
     @records=Record.all
     @organization = current_user.organization
+    if params[:search]
+      @people = Person.search(params[:search]).order("created_at DESC")
+    else
+      @people = Person.all.order('created_at DESC')
+    end
+    if params[:sport]
+      @people = Person.sport(params[:sport]).order("created_at DESC")
+    else
+      @people = Person.all.order('created_at DESC')
+    end
   end
 
   def new

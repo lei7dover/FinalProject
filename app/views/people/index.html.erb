@@ -1,16 +1,21 @@
 <div class = "container">
+  <% if @people.blank? %>
+  <h4>There are no people that match your search <%= params[:search] %>.</h4>
+<% end %>
 <% @people.each do |p| %>
   <div class = "col-md-3">
-    <p><h5> Name</h5></p><p> <%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, "#{p.photo}" %></p>
-    <p><h5> Gender </h5>  <p> <%= p.gender %></p>
+    <span><h5> Name</h5><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, p %></span>
+    <p><h5> Gender </h5>  <p> <%= p.gender.titleize %></p>
+    <h5> Sports</h5>
     <% p.records.each do |r| %>
-    <p><h5> Sport</h5><%= r.sport %></p>
+    <li><%= r.sport.titleize %></li>
 <% end %>
   </div>
-
-    <div class = "col-md-3">
+    <div class = "col-md-2">
       <p><%= image_tag(p.photo_url, :class => "img-responsive") %></p>
     </div><br>
-
+    <div class = "col-md-1">
+    </div>
       <% end %>
+
 </div>
