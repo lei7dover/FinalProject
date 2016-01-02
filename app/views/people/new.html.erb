@@ -20,6 +20,7 @@
       <div>
         <%= f.text_field :first_name %>
         <%= f.text_field :last_name, placeholder: "Maiden Name if currently married" %>
+        <%= f.select :class_of,(100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true  }%>
         <h5>Gender</h5>
         <%= f.radio_button :gender, "male", label: "Male", inline: true %>
         <%= f.radio_button :gender, "female", label: "Female", inline: true %><br>
@@ -36,7 +37,7 @@
     </div><br>
       <div class="actions">
         <%= link_to 'Add another record', '#', :id=> "button" ,:class => "btn btn-success"%>
-        <%= f.submit "Create a person with records", class: "btn btn-primary btn-large" %>
+        <%= f.submit class: "btn btn-primary btn-large" %>
       </div>
         <% end %>
     <% end %>
