@@ -1,6 +1,6 @@
 <div class="row text-center">
   <h3>Search TrophyCase</h3><br>
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-md-4">
         <!--<a class="btn btn-default btn-success " href="/people">By Sport</a>-->
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -9,7 +9,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <%@organization.people.records_sport_pluck.each do |sport|%>
-            <li><%=link_to sport, organization_people_path(@organization, :records_sport_filter => sport) %> </li>
+            <li><%=link_to sport.titleize, organization_people_path(@organization, :records_sport_filter => sport) %> </li>
             <% end %>
           </ul>
         </div>
@@ -17,22 +17,22 @@
     </div>
 
     <!-- /.col-md-4 -->
-    <div class="col-xs-12 col-md-3">
+    <!--<div class="col-xs-12 col-md-3">-->
         <!--<a class="btn btn-default btn-success " href="/people">Achievements</a>-->
-        <div class="dropdown">
+        <!--<div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Achievements
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <%@organization.people.records_sport_pluck.each do |achievements|%>
-            <li><%=link_to achievements, organization_people_path(@organization) %> </li>
+            <%@organization.people.records_all_state_1st_team_pluck.each do |achievements|%>
+            <li><%=link_to achievements, organization_people_path(@organization, :records_all_state_1st_team_filter => achievements) %> </li>
             <% end %>
           </ul>
-        </div>
-    </div>
+        </div>-->
+    <!--</div>-->
     <!-- /.col-md-4 -->
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-md-4">
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Class of by Year
@@ -40,13 +40,15 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
           <%@organization.people.people_class_of_pluck.each do |classof|%>
+          <% if classof != nil %>
           <li><%=link_to classof, organization_people_path(@organization, :people_class_of_filter => classof) %> </li>
+          <% end %>
           <% end %>
         </ul>
       </div>
     </div>
     <!-- /.col-md-4 -->
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-4">
         <!--<a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>-->
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
