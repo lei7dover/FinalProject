@@ -50,7 +50,7 @@
         </div>
         <div class = "col-xs-12 col-md-4">
       <% if current_user %>
-      <%= link_to "Edit this Person", edit_person_path(@person) %>
+      <%= link_to "Edit this Person", edit_organization_person_path(@organization,@person) %>
       <% end %>
     </div>
   </div><br>

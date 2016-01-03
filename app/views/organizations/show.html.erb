@@ -44,7 +44,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.records_sport_pluck.each do |sport|%>
-                <li><%=link_to sport, people_path(:records_sport_filter => sport) %> </li>
+                <li><%=link_to sport, organization_people_path(@organization, :records_sport_filter => sport) %> </li>
                 <% end %>
               </ul>
             </div>
@@ -61,7 +61,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.records_sport_pluck.each do |achievements|%>
-                <li><%=link_to achievements, people_path %> </li>
+                <li><%=link_to achievements, organization_people_path(@organization) %> </li>
                 <% end %>
               </ul>
             </div>
@@ -76,7 +76,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.people_class_of_pluck.each do |classof|%>
-                <li><%=link_to classof, people_path(:people_class_of_filter => classof) %> </li>
+                <li><%=link_to classof, organization_people_path(@organization, :people_class_of_filter => classof) %> </li>
                 <% end %>
               </ul>
             </div>
@@ -91,7 +91,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.people_last_name_pluck.each do |lastname|%>
-                <li><%=link_to lastname, people_path(:people_last_name_filter => lastname) %> </li>
+                <li><%=link_to lastname, organization_people_path(@organization, :people_last_name_filter => lastname) %> </li>
                 <% end %>
               </ul>
             </div>

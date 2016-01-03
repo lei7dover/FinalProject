@@ -32,7 +32,11 @@ class OrganizationsController < ApplicationController
       #else
       #@organization= Organization.new
       #end
+      if current_user
     @organization= Organization.find_by user_id: @current_user.id
+      else
+        @organization = Organization.find(params[:id])
+      end
     @people = Person.all
     #@organizations= Organization.all
   end

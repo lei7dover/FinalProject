@@ -9,7 +9,8 @@ class PeopleController < ApplicationController
   def index
     #@people = Person.all
     @records=Record.all
-    @organization = current_user.organization
+    #@organization = current_user.organization
+    @organization = Organization.find(params[:organization_id])
     if params[:search]
       @people = Person.search(params[:search]).order("created_at DESC")
     else
@@ -21,7 +22,7 @@ class PeopleController < ApplicationController
 
   def new
     @organization = current_user.organization
-    @person= Person.new
+    @person= @organization.people.build
     @record = @person.records.build
 
   end
@@ -30,7 +31,7 @@ class PeopleController < ApplicationController
     @organization = current_user.organization
     @person=Person.new(person_params)
     if @person.save
-      redirect_to @person
+      redirect_to organization_person_path
     else
       respond_to do |format|
         format.html  { render :new }
@@ -63,7 +64,11 @@ class PeopleController < ApplicationController
     @person= Person.find(params[:id])
     @people= Person.all
     @records = Record.all
+    if current_user
     @organization=current_user.organization
+    else
+    @organization = Organization.find(params[:organization_id])
+    end
   end
 
   private

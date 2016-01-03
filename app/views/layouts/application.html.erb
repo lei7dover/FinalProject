@@ -67,9 +67,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                      <%= form_tag(people_path, :method => "get", id: "search-form", :class => "form-inline") do %>
+                  <!--<% if @user_session == nil %>-->
+                  <% if @organization != nil %>
+                      <%= form_tag(organization_people_path(@organization), :method => "get", id: "search-form", :class => "form-inline") do %>
+
+                    <!--<% end %>-->
                       <%= text_field_tag :search, params[:search], placeholder: "Search People" , :class => "form-control" %>
                       <%= button_tag "", type: 'submit', class: "btn btn-success glyphicon glyphicon-search" %>
+                      <% end %>
                       <% end %>
 
                 </ul>
@@ -92,7 +97,7 @@
                           <% if @current_user %>
                           <p class = "navbar-text navbar-right" > <%= @current_user.name.titleize %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %>
                         </p>
-                        <p class = "navbar-text navbar-right" > <%= link_to "Add Person & Record", new_person_path %>
+                        <p class = "navbar-text navbar-right" > <%= link_to "Add Person & Record", new_organization_person_path(@organization) %>
                       </p>
                       <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
                     </p>
