@@ -1,7 +1,7 @@
 <div class = "container" id= "all-container">
   <h2> Athlete Information </h2>
     <h5> If the athlete participated in more than one sport please complete multiple records</h5>
-  <%= bootstrap_form_for[@organization, @person] do |f| %>
+  <%= bootstrap_form_for [@organization, @person] do |f| %>
     <% if @person.errors.any? %>
       <div id="error_explanation">
         <h2>

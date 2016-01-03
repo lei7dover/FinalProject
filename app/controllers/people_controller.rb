@@ -21,16 +21,24 @@ class PeopleController < ApplicationController
   end
 
   def new
-    @organization = current_user.organization
+    if current_user
+    @organization=current_user.organization
+    else
+    @organization = Organization.find(params[:organization_id])
+    end
     @person= @organization.people.build
     @record = @person.records.build
 
   end
 
   def create
-    @organization = current_user.organization
+    if current_user
+    @organization=current_user.organization
+    else
+    @organization = Organization.find(params[:organization_id])
+    end
     @person=Person.new(person_params)
-    if @person.save
+    if @person.save!
       redirect_to organization_person_path
     else
       respond_to do |format|
@@ -61,14 +69,14 @@ class PeopleController < ApplicationController
   end
 
   def show
-    @person= Person.find(params[:id])
-    @people= Person.all
-    @records = Record.all
     if current_user
     @organization=current_user.organization
     else
     @organization = Organization.find(params[:organization_id])
     end
+    @person= Person.find(params[:id])
+    @people= Person.all
+    @records = Record.all
   end
 
   private
