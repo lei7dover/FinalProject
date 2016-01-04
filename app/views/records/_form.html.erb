@@ -1,11 +1,11 @@
 <br><div>
   <%= ff.select :sport, [['Basketball','basketball'],['Football','football'],['Baseball','baseball'],['Soccer', 'soccer'],['Softball','softball'],['Volleyball','volleyball'],['Cross Country','cross country'],['Track','track'],['Lacrosse','lacrosse'],['Wrestling','wrestling'],['Tennis','tennis'],['Swimming','swimming'],['Bowling','bowling'],['Golf','golf'],['Rugby','rugby'],['Ice Hockey','ice hockey'],['Gymnastics','gymnastics'],['Cheerleading','cheerleading'],['Diving','diving'],['Field Hockey','field hockey']], { include_blank: true } %>
   <%= ff.label :year_inducted_in_hall_of_fame %>
-  <%= ff.select :induction_year,(100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true , skip_label: true } %>
+  <%= ff.select :induction_year,(150.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true , skip_label: true } %>
   <%= ff.label :first_year_participated %>
-  <%= ff.select :first_active_year,(100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true , skip_label: true} %>
+  <%= ff.select :first_active_year,(150.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true , skip_label: true} %>
   <%= ff.label :last_year_participated %>
-  <%= ff.select :last_active_year, (100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true, skip_label: true } %>
+  <%= ff.select :last_active_year, (150.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true, skip_label: true } %>
   <%= ff.text_area :bio %>
   <h5>Select <strong>ALL</strong> the achievements <%=@person.first_name%> received in the chosen sport. </h5>
   <%= ff.check_box :all_state_1st_team %>

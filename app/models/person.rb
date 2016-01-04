@@ -6,7 +6,7 @@ class Person < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :gender
 
   def self.search(search)
-    where("first_name LIKE ? OR last_name LIKE ? ", "%#{search}%", "%#{search}%") || where("first_name and " " and last_name LIKE ?", "%#{search}%")
+    where("LOWER(first_name) ILIKE ? OR LOWER(last_name) ILIKE ? ", "%#{search}%", "%#{search}%") || where("LOWER(first_name) and " " and LOWER(last_name) ILIKE ?", "%#{search}%")
   end
 
   scope :by_organization_filter, -> (org) {where("people.organization_id" => org)}

@@ -78,10 +78,11 @@
     <% if p.class_of %>
     <span> (Class of <%= p.class_of %>)</span>
     <% end %>
-    <p> <strong>Sports</strong></p>
+    <ul>
       <% p.records.each do |r| %>
         <li><%= r.sport.titleize %></li>
       <% end %>
+    </ul>
     </div>
     <div class = "col-md-3">
       <p><%= image_tag(p.photo_url, :class => "img-responsive") %></p>
