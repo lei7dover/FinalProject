@@ -37,9 +37,9 @@ class PeopleController < ApplicationController
     else
     @organization = Organization.find(params[:organization_id])
     end
-    @person=Person.new(person_params)
+    @person=@organization.people.new(person_params)
     if @person.save!
-      redirect_to organization_person_path
+      redirect_to organization_person_path(@organization, @person)
     else
       respond_to do |format|
         format.html  { render :new }
@@ -77,6 +77,14 @@ class PeopleController < ApplicationController
     @person= Person.find(params[:id])
     @people= Person.all
     @records = Record.all
+  end
+
+  def destroy
+    @person= Person.find(params[:id])
+    @person.destroy
+    respond_to do |format|
+      format.html { redirect_to organization_people_path, [:alert]=> 'Person was successfully destroyed.' }
+    end
   end
 
   private

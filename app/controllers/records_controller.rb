@@ -25,6 +25,10 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    @record.destroy
+  end
+
   private
 
   def record_params

@@ -69,22 +69,23 @@
 
 <div class = "container">
   <% if @people.blank? %>
-  <h4>There are no people that match your search <%= params[:search] %>.</h4>
-<% end %>
+    <h4>There are no people that match your search <%= params[:search] %>.</h4>
+  <% end %>
+  <div class  = "row" >
 <% @people.each do |p| %>
   <div class = "col-md-3">
-    <span><h5> Name</h5><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, p(organization_people_path) %></span>
-    <p><h5> Gender </h5>  <p> <%= p.gender.titleize %></p>
-    <h5> Sports</h5>
-    <% p.records.each do |r| %>
-    <li><%= r.sport.titleize %></li>
-<% end %>
-  </div>
-    <div class = "col-md-2">
-      <p><%= image_tag(p.photo_url, :class => "img-responsive") %></p>
-    </div><br>
-    <div class = "col-md-1">
-    </div>
+    <span><strong><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, organization_person_path(@organization,p) %></strong></span>
+    <% if p.class_of %>
+    <span> (Class of <%= p.class_of %>)</span>
+    <% end %>
+    <p> <strong>Sports</strong></p>
+      <% p.records.each do |r| %>
+        <li><%= r.sport.titleize %></li>
       <% end %>
-
+    </div>
+    <div class = "col-md-3">
+      <p><%= image_tag(p.photo_url, :class => "img-responsive") %></p>
+    </div>
+    <% end %>
+  </div>
 </div>
