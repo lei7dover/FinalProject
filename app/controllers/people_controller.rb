@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
     #@organization = current_user.organization
     @organization = Organization.find(params[:organization_id])
     if params[:search]
-      @people = Person.search(params[:search]).order("created_at DESC")
+      @people = @organization.people.search(params[:search]).order("created_at DESC")
     else
       #@people = Person.all.order('created_at DESC')
       @people = apply_scopes(Person).all.order('created_at DESC')
