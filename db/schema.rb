@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160104034603) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "organizations", force: :cascade do |t|
     t.string   "logo_id"
     t.string   "street"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160104034603) do
     t.string "namespace", null: false
   end
 
-  add_index "refile_attachments", ["namespace"], name: "index_refile_attachments_on_namespace"
+  add_index "refile_attachments", ["namespace"], name: "index_refile_attachments_on_namespace", using: :btree
 
   create_table "user_sessions", force: :cascade do |t|
     t.datetime "created_at", null: false

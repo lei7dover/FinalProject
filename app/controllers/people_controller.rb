@@ -60,9 +60,14 @@ class PeopleController < ApplicationController
   end
 
   def update
+    if current_user
+    @organization=current_user.organization
+    else
+    @organization = Organization.find(params[:organization_id])
+    end
     @person= Person.find(params[:id])
     if @person.update(person_params)
-      redirect_to @person
+      redirect_to organization_person_path(@organization, @person)
     else
       render :action => 'edit'
     end
