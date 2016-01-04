@@ -10,7 +10,7 @@
         </li>
         <% if r.bio %>
         <li>
-          <span>Bio: <%= r.bio.titleize %></span>
+          <span>Bio: <%= r.bio %></span>
         </li>
         <% end %>
           <% if r.induction_year %>
@@ -27,13 +27,13 @@
           <span>Achievements:
             <ul>
             <% if r.hall_of_fame == "1" %>
-             <li>Hall of fame</li>
+             <li>Hall of Fame</li>
             <% end %>
             <% if r.all_state_1st_team == "1" %>
-            <li>All state 1st team</li>
+            <li>All State 1st Team</li>
             <% end %>
             <% if r.all_state_2nd_team == "1" %>
-            <li> All state 2nd team </li>
+            <li> All State 2nd Team </li>
             <% end %>
             <% if r.all_state_3rd_team == "1" %>
             <li> All State 3rd Team</li>
