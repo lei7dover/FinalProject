@@ -1,7 +1,7 @@
 <div class = "container" id= "all-container">
   <h2> Athlete Information </h2>
     <h5> If the athlete participated in more than one sport please complete multiple records</h5>
-  <%= bootstrap_form_for(@person) do |f| %>
+  <%= bootstrap_form_for [@organization, @person] do |f| %>
     <% if @person.errors.any? %>
       <div id="error_explanation">
         <h2>
@@ -20,6 +20,7 @@
       <div>
         <%= f.text_field :first_name %>
         <%= f.text_field :last_name, placeholder: "Maiden Name if currently married" %>
+        <%= f.select :class_of,(100.years.ago.year..Date.today.year).to_a.reverse.collect{|y| [y,y]}, { include_blank: true  }%>
         <h5>Gender</h5>
         <%= f.radio_button :gender, "male", label: "Male", inline: true %>
         <%= f.radio_button :gender, "female", label: "Female", inline: true %><br>
@@ -36,9 +37,10 @@
     </div><br>
       <div class="actions">
         <%= link_to 'Add another record', '#', :id=> "button" ,:class => "btn btn-success"%>
-        <%= f.submit "Create a person with records", class: "btn btn-primary btn-large" %>
+        <%= f.submit class: "btn btn-primary btn-large" %>
       </div>
         <% end %>
     <% end %>
   </div>
+  <br><br>
 </div>
