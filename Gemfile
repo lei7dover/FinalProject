@@ -17,7 +17,7 @@ gem 'factory_girl_rails'
 gem 'friendly_id'
 gem 'capybara'
 gem 'has_scope'
-
+gem 'pg'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -62,5 +62,5 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
+
 end
