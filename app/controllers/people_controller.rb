@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
     #@people = Person.all
     @records=Record.all
     #@organization = current_user.organization
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.friendly.find(params[:organization_id])
     if params[:search]
       @people = @organization.people.search(params[:search]).order("created_at DESC")
     else
@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
     if current_user
     @organization=current_user.organization
     else
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.friendly.find(params[:organization_id])
     end
     @person= @organization.people.build
     @record = @person.records.build
@@ -35,7 +35,7 @@ class PeopleController < ApplicationController
     if current_user
     @organization=current_user.organization
     else
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.friendly.find(params[:organization_id])
     end
     @person=@organization.people.new(person_params)
     if @person.save!
@@ -63,7 +63,7 @@ class PeopleController < ApplicationController
     if current_user
     @organization=current_user.organization
     else
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.friendly.find(params[:organization_id])
     end
     @person= Person.find(params[:id])
     if @person.update(person_params)
@@ -77,7 +77,7 @@ class PeopleController < ApplicationController
     if current_user
     @organization=current_user.organization
     else
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.friendly.find(params[:organization_id])
     end
     @person= Person.find(params[:id])
     @people= Person.all

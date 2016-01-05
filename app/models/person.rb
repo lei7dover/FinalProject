@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
     where("LOWER(first_name) ILIKE ? OR LOWER(last_name) ILIKE ? ", "%#{search}%", "%#{search}%") || where("LOWER(first_name) and " " and LOWER(last_name) ILIKE ?", "%#{search}%")
   end
 
-  scope :by_organization_filter, -> (org) {where("people.organization_id" => org)}
+  scope :by_organization_filter, -> (org) {joins(:organization).where("organizations.slug" => org)}
 
   scope :records_sport_pluck, -> {joins(:records).pluck("Distinct records.sport").sort}
   scope :records_sport_filter, -> (sport) { joins(:records).where("records.sport" => sport) }
