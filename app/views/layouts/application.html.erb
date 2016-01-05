@@ -72,9 +72,9 @@
                   <% if params[:action] != "new" %>
                       <%= form_tag(organization_people_path(@organization), :method => "get", id: "search-form", :class => "form-inline") do %>
 
-              
+
                       <%= text_field_tag :search, params[:search], placeholder: "Search People" , :class => "form-control" %>
-                      <%= button_tag "", type: 'submit', class: "btn btn-success glyphicon glyphicon-search" %>
+                      <%= button_tag "", type: 'submit', class: "btn btn-inverse glyphicon glyphicon-search" %>
                       <% end %>
                       <% end %>
                       <% end %>
@@ -103,9 +103,11 @@
                         <p class = "navbar-text navbar-right" > <%= link_to "Add Person & Record", new_organization_person_path(@organization) %>
                       </p>
                       <% end %>
+                      <% if @organization == nil %>
                       <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
                     </p>
-                    <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@current_user) %>
+                    <% end %>
+                    <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@organization) %>
                   </p>
                           <% else %>
                         <p class = "navbar-text navbar-right">

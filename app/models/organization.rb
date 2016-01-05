@@ -4,4 +4,6 @@ class Organization < ActiveRecord::Base
   attachment :logo
   attachment :org_photo
   validates_presence_of :name
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 end

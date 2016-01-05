@@ -6,7 +6,7 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
     if current_user
        if current_user.organization
-          @organization = Organization.find_by user_id: @current_user.id
+          @organization = Organization.friendly.find_by user_id: @current_user.id
           render :show
        end
     end
@@ -33,9 +33,9 @@ class OrganizationsController < ApplicationController
       #@organization= Organization.new
       #end
       if current_user
-    @organization= Organization.find_by user_id: @current_user.id
+    @organization= Organization.friendly.find_by user_id: @current_user.id
       else
-        @organization = Organization.find(params[:id])
+        @organization = Organization.friendly.find(params[:id])
       end
     @people = Person.all
     #@organizations= Organization.all
@@ -56,12 +56,12 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    @organization= Organization.find_by user_id: @current_user.id
+    @organization= Organization.friendly.find_by user_id: @current_user.id
     render :new
   end
 
   def update
-    @organization= Organization.find(params[:id])
+    @organization= Organization.friendly.find(params[:id])
     if @organization.update(organization_params)
       redirect_to @organization
     else
@@ -71,7 +71,7 @@ class OrganizationsController < ApplicationController
 
   private
   def set_org
-    @organization=Organization.find(params[:id])
+    @organization=Organization.friendly.find(params[:id])
   end
 
   def organization_params

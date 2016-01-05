@@ -240,7 +240,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
-  friendly_id
+  friendly_id (~> 5.1.0)
   has_scope
   jbuilder (~> 2.0)
   jquery-rails
