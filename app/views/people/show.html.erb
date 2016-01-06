@@ -1,30 +1,32 @@
-<div class = "container">
+<div class = "container" id= "person-info">
   <br>
-  <div class = "col-xs-12 col-md-6">
-    <h3><%= @person.first_name%> <%= @person.last_name %></h3>
+  <div class = "row">
+  <div class = "col-xs-12 col-md-6 info">
+
+    <h2><%= @person.first_name%> <%= @person.last_name %></h2>
       <% if @person.class_of %><span>(Class of <%= @person.class_of %>)</span><br><br> <% end %>
       <% @person.records.each do |r| %>
       <ul>
-        <li>
-          <span>Sport: <%= r.sport.titleize %></span>
-        </li>
+
+          <p class = "sport"><strong> <%= r.sport.titleize %></strong></p>
+
         <% if r.bio %>
-        <li>
-          <span>Bio: <%= r.bio %></span>
-        </li>
+
+          <p><%= r.bio %></p>
+
         <% end %>
           <% if r.induction_year %>
         <li>
-          <span>Inducted into Hall of Fame: <%= r.induction_year %></span>
+          <span><strong>Inducted into Hall of Fame:</strong> <%= r.induction_year %></span>
         </li>
           <% end %>
           <% if r.first_active_year && r.last_active_year %>
         <li>
-          <span>Participated: <%= r.first_active_year%>-<%= r.last_active_year%></span>
+          <span><strong>Participated: </strong><%= r.first_active_year%>-<%= r.last_active_year%></span>
         </li>
         <% end %>
         <li>
-          <span>Achievements:
+          <span><strong>Achievements:</strong>
             <ul>
             <% if r.hall_of_fame == "1" %>
              <li>Hall of Fame</li>
@@ -42,22 +44,33 @@
           </span>
         </li>
       </ul>
-      <hr>
-      <% end %>
-      <div class = "row">
-        <div class = "col-xs-12 col-md-4">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=SHAREMESSAGE" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Share to Facebook</a>
-        </div>
-        <div class = "col-xs-12 col-md-4">
-      <% if current_user %>
-      <%= link_to "Edit this Person", edit_organization_person_path(@organization,@person) %>
-      <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, organization_person_path(@organization,@person), method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
     </div>
-  </div><br>
+      <div class = "col-xs-10 col-md-3">
+      <%= image_tag(@person.photo_url, class: "img-responsive") %>
+      </div>
   </div>
-<div class = "col-xs-10 col-md-3">
-<%= image_tag(@person.photo_url, class: "img-responsive") %>
-</div>
+  <hr>
+      <div class = "row">
+        <!--<div class = "col-xs-12 col-md-4">-->
+          <!--<a href="https://www.facebook.com/sharer/sharer.php?u=SHAREMESSAGE" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Share to Facebook</a>-->
+          <!--<div class = "col-xs-12 col-xs-offset-8">
+          <span> <%=link_to '<span class="glyphicon glyphicon-share-alt"></span>'.html_safe, "https://www.facebook.com" %></span>
+        </div>-->
+      <!--</div>-->
+        <div class = "col-xs-12 col-md-10 icons">
+          <div class = "col-xs-4 col-md-2">
+            <span> <%=link_to '<h2 class="glyphicon glyphicon-share-alt"></h2>'.html_safe, "https://www.facebook.com" %></span>
+          </div>
+      <% if current_user %>
+      <div class = "col-xs-4 col-md-2">
+        <span><%= link_to '<h2 class="glyphicon glyphicon-edit"></h2>'.html_safe, edit_organization_person_path(@organization,@person) %></span>
+      </div>
+      <div class = "col-xs-4 col-md-2">
+      <span><%= link_to '<h2 class="glyphicon glyphicon-trash"></h2>'.html_safe, organization_person_path(@organization,@person), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      <% end %>
+    </div>
+    </div>
+  </div><br>
 
 </div><br><br><br><br><br>
