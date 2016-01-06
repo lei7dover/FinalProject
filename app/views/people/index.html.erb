@@ -78,9 +78,9 @@
     <%row.each do |p| %>
     <div class = "card col-xs-12 col-md-5">
       <div class = "col-xs-6 col-md-6 text-left">
-        <span><strong><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, organization_person_path(@organization,p) %></strong></span>
+        <span><h3><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, organization_person_path(@organization,p) %></h3></span>
           <% if p.class_of %>
-            <span> (Class of <%= p.class_of %>)</span>
+            <p> (Class of <%= p.class_of %>)</p>
           <% end %>
               <ul>
                 <% p.records.each do |r| %>
