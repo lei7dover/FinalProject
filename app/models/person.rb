@@ -4,9 +4,15 @@ class Person < ActiveRecord::Base
   attachment :photo
   accepts_nested_attributes_for :records
   validates_presence_of :first_name, :last_name, :gender
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
+
+  def full_name
+    first_name + " " + last_name
+  end
 
   def self.search(search)
-    where("LOWER(first_name) ILIKE ? OR LOWER(last_name) ILIKE ? ", "%#{search}%", "%#{search}%") || where("LOWER(first_name) and " " and LOWER(last_name) ILIKE ?", "%#{search}%")
+    where("first_name ILIKE ? OR last_name ILIKE ? OR ((first_name || ' ' || last_name) ILIKE  ?)", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
   scope :by_organization_filter, -> (org) {joins(:organization).where("organizations.slug" => org)}
