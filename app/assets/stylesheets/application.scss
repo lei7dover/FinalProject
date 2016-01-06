@@ -64,6 +64,8 @@ footer {
   padding: 20px 20px;
   margin: 10px;
   color: white;
+  min-height: 280px;
+  max-height:280px;
 
 }
 .card a{
@@ -84,9 +86,8 @@ footer {
   font-family:tahoma;
 }
 
-.image{
-
-
+.showphoto{
+  max-height: 400px;
 }
 
 .icons{
@@ -97,4 +98,24 @@ footer {
 .sport{
   text-align:left;
   text-decoration:underline;
+}
+
+.org-names-index a{
+  color:#5F0707;
+  text-decoration: none;
+}
+
+@media(min-width:992px){
+.cardholder{
+  margin:0px auto;
+  padding-left:12vw;
+}
+}
+
+.cardrow{
+  margin: 0px auto;
+}
+
+.indexphoto{
+  max-height:250px;
 }
