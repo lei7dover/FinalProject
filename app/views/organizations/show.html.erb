@@ -42,7 +42,7 @@
                 <strong class="opt">Sport</strong>
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.records_sport_pluck.each do |sport|%>
                 <li><%=link_to sport.titleize, organization_people_path(@organization, :records_sport_filter => sport) %> </li>
                 <% end %>
@@ -73,7 +73,7 @@
                 <strong class= "opt">Class of (Year)</strong>
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.people_class_of_pluck.each do |classof|%>
                 <% if classof != nil %>
                 <li><%=link_to classof, organization_people_path(@organization, :people_class_of_filter => classof) %> </li>
@@ -90,7 +90,7 @@
                 <strong class = "opt">Last Name</strong>
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
                 <%@organization.people.people_last_name_pluck.each do |lastname|%>
                 <li><%=link_to lastname, organization_people_path(@organization, :people_last_name_filter => lastname) %> </li>
                 <% end %>

@@ -2,7 +2,7 @@
 
     <!-- Heading Row -->
     <div class="row">
-      <div class = "col-xs-12">
+
         <h1 class= "text-center"> About TrophyCase</h1>
         <div class = "col-xs-4">
         <h4>Problems TrophyCase helps to solve:</h6>
@@ -38,70 +38,24 @@
           <li>City/Towns</li>
         </ul>
         </div>
-      </div>
 
-      <!--<div class= "row">-->
-        <!--<div class = "col-xs-12">-->
-          <!--link_to image_tag(""), "#{o.website}".html.safe) -->
-        <!--</div>-->
 
       </div>
-<br><br>
+      <hr>
+
     <div class="row">
       <div class = "col-xs-12">
         <h3 class = "text-center"> Current Users of TrophyCase </h3>
       </div>
-        <!--<div class="col-md-8">-->
           <% @organizations.each do |organization| %>
-            <!--<%= image_tag(organization.org_photo_url, :class => "img-responsive") %>-->
-        <!--</div>-->
-        <!-- /.col-md-8 -->
         <div class="col-md-4">
-            <h4><%=organization.name %></h4>
-            <p>Address: <%=organization.street %> <%= organization.city %> <%= organization.state %> <%= organization.zip %></p>
-            <p>Phone Number: <%= organization.phone_number %> </p>
+            <h4 class = "org-names-index"><%=link_to organization.name, organization_path(organization) %></h4>
+            <p><%=organization.street %></p>
+            <p> <%= organization.city.titleize %>, <%= organization.state.titleize %> <%= organization.zip %></p>
+            <p><%= organization.phone_number %></p>
         </div>
         <% end %>
-        <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
 
-
-
-    <!-- Call to Action Well -->
-    <!--<div class="row">
-        <div class="col-lg-12">
-            <div class="well text-center">
-                Check out our athletic accomplishments!
-            </div>
-        </div>-->
-        <!-- /.col-lg-12 -->
-  <!--  </div> -->
-    <!-- /.row -->
-
-    <!-- Content Row -->
-    <!--<div class="row text-center">
-      <h3 class= "text-center">Search TrophyCase</h3><br>
-        <div class="col-md-2">
-            <a class="btn btn-default btn-success " href="/people">By Sport</a>
-        </div>-->
-        <!-- /.col-md-4 -->
-      <!--  <div class="col-md-2">
-            <a class="btn btn-default btn-success" href="/people">Hall of Famers</a>
-        </div>-->
-        <!-- /.col-md-4 -->
-        <!--<div class="col-md-2">
-            <a class="btn btn-default btn-success " href="/people">Achievements</a>
-        </div>-->
-        <!-- /.col-md-4 -->
-        <!--<div class="col-md-2">
-            <a class="btn btn-default btn-success" href="/people">By Year</a>
-        </div>-->
-        <!-- /.col-md-4 -->
-        <!--<div class="col-md-2">
-            <a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>
-        </div>-->
-        <!-- /.col-md-4 -->
-    <!--</div><br><br>-->
-    <!-- /.row -->
 </div>
