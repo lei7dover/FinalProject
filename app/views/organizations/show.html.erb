@@ -3,16 +3,16 @@
     <!-- Heading Row -->
     <div class="row">
         <div class="col-xs-12 col-md-6">
-              <%= image_tag(@organization.org_photo_url, :class => "img-responsive") %>
+              <%= image_tag(@organization.org_photo_url, :class => "img-responsive center-block") %>
         </div>
-        <div class = "col-xs-0 col-md-2">
-        </div>
-        <!-- /.col-md-8 -->
-        <div class="col-xs-12 col-xs-offset-2 col-md-4">
 
-            <h1><%=@organization.name%></h1>
-            <p>Address: <%=@organization.street %> <%= @organization.city %> <%= @organization.state %> <%= @organization.zip %></p>
-            <p>Phone Number <%= @organization.phone_number %></p>
+        <!-- /.col-md-8 -->
+        <div class="col-xs-12 col-xs-offset-1 col-md-4 org-info">
+
+            <h1 class ="org-name"><%=@organization.name.titleize %></h1>
+            <p><%=@organization.street %></p>
+            <p> <%= @organization.city.titleize %>, <%= @organization.state.titleize %> <%= @organization.zip %></p>
+            <p><%= @organization.phone_number %></p>
         </div>
 
         <!-- /.col-md-4 -->
@@ -38,8 +38,8 @@
         <div class="col-xs-12 col-md-4">
             <!--<a class="btn btn-default btn-success " href="/people">By Sport</a>-->
             <div class="dropdown">
-              <button class="btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Sport
+              <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <strong class="opt">Sport</strong>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -48,7 +48,6 @@
                 <% end %>
               </ul>
             </div>
-
         </div>
 
         <!-- /.col-md-4 -->
@@ -70,8 +69,8 @@
         <div class="col-xs-12 col-md-4">
             <!--<a class="btn btn-default btn-success" href="/people">By Year</a>-->
             <div class="dropdown">
-              <button class="btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Class of (Year)
+              <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <strong class= "opt">Class of (Year)</strong>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -87,8 +86,8 @@
         <div class="col-xs-12 col-md-4">
             <!--<a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>-->
             <div class="dropdown">
-              <button class="btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Last Name
+              <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <strong class = "opt">Last Name</strong>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

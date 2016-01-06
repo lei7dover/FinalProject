@@ -1,92 +1,100 @@
-<div class="row text-center">
-  <h3>Search TrophyCase</h3><br>
-    <div class="col-xs-12 col-md-4">
-        <!--<a class="btn btn-default btn-success " href="/people">By Sport</a>-->
-        <div class="dropdown">
-          <button class="btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Sport
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <%@organization.people.records_sport_pluck.each do |sport|%>
-            <li><%=link_to sport.titleize, organization_people_path(@organization, :records_sport_filter => sport) %> </li>
-            <% end %>
-          </ul>
-        </div>
+<div class = "container">
+  <div class="row text-center">
+    <h3>Search TrophyCase</h3><br>
+      <div class="col-xs-12 col-md-4">
+          <!--<a class="btn btn-default btn-success " href="/people">By Sport</a>-->
+          <div class="dropdown">
+            <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <strong class = "opt">Sport</strong>
+              <span class="caret"></span>
+            </button>
+            <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
+              <%@organization.people.records_sport_pluck.each do |sport|%>
+              <li><%=link_to sport.titleize, organization_people_path(@organization, :records_sport_filter => sport) %> </li>
+              <% end %>
+            </ul>
+          </div>
 
-    </div>
-
-    <!-- /.col-md-4 -->
-    <!--<div class="col-xs-12 col-md-3">-->
-        <!--<a class="btn btn-default btn-success " href="/people">Achievements</a>-->
-        <!--<div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Achievements
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <%@organization.people.records_all_state_1st_team_pluck.each do |achievements|%>
-            <li><%=link_to achievements, organization_people_path(@organization, :records_all_state_1st_team_filter => achievements) %> </li>
-            <% end %>
-          </ul>
-        </div>-->
-    <!--</div>-->
-    <!-- /.col-md-4 -->
-    <div class="col-xs-12 col-md-4">
-      <div class="dropdown">
-        <button class="btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Class of (Year)
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <%@organization.people.people_class_of_pluck.each do |classof|%>
-          <% if classof != nil %>
-          <li><%=link_to classof, organization_people_path(@organization, :people_class_of_filter => classof) %> </li>
-          <% end %>
-          <% end %>
-        </ul>
       </div>
-    </div>
-    <!-- /.col-md-4 -->
-    <div class="col-xs-12 col-md-4">
-        <!--<a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>-->
+
+      <!-- /.col-md-4 -->
+      <!--<div class="col-xs-12 col-md-3">-->
+          <!--<a class="btn btn-default btn-success " href="/people">Achievements</a>-->
+          <!--<div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Achievements
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <%@organization.people.records_all_state_1st_team_pluck.each do |achievements|%>
+              <li><%=link_to achievements, organization_people_path(@organization, :records_all_state_1st_team_filter => achievements) %> </li>
+              <% end %>
+            </ul>
+          </div>-->
+      <!--</div>-->
+      <!-- /.col-md-4 -->
+      <div class="col-xs-12 col-md-4">
         <div class="dropdown">
-          <button class="btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Last Name
+          <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <strong class = "opt">Class of (Year)</strong>
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <%@organization.people.people_last_name_pluck.each do |lastname|%>
-            <li><%=link_to lastname, organization_people_path(@organization, :people_last_name_filter => lastname) %> </li>
+          <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
+            <%@organization.people.people_class_of_pluck.each do |classof|%>
+            <% if classof != nil %>
+            <li><%=link_to classof, organization_people_path(@organization, :people_class_of_filter => classof) %> </li>
+            <% end %>
             <% end %>
           </ul>
         </div>
-    </div>
-    <!-- /.col-md-4 -->
-</div><br><br>
-<!-- /.row -->
-</div><hr>
-
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-xs-12 col-md-4">
+          <!--<a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>-->
+          <div class="dropdown">
+            <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <strong class= "opt">Last Name</strong>
+              <span class="caret"></span>
+            </button>
+            <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
+              <%@organization.people.people_last_name_pluck.each do |lastname|%>
+              <li><%=link_to lastname, organization_people_path(@organization, :people_last_name_filter => lastname) %> </li>
+              <% end %>
+            </ul>
+          </div>
+      </div>
+      <!-- /.col-md-4 -->
+  </div><br><br>
+  <!-- /.row -->
+  </div><hr>
+</div>
 <div class = "container">
   <% if @people.blank? %>
     <h4>There are no people that match your search <%= params[:search] %>.</h4>
   <% end %>
+
+<% @people.each_slice(2) do |row| %>
   <div class  = "row" >
-<% @people.each do |p| %>
-  <div class = "col-md-3">
-    <span><strong><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, organization_person_path(@organization,p) %></strong></span>
-    <% if p.class_of %>
-    <span> (Class of <%= p.class_of %>)</span>
-    <% end %>
-    <ul>
-      <% p.records.each do |r| %>
-        <li><%= r.sport.titleize %></li>
+    <%row.each do |p| %>
+    <div class = "card col-xs-12 col-md-5">
+      <div class = "col-xs-12 col-md-6 text-left">
+        <span><strong><%= link_to "#{p.first_name}" " " "#{p.last_name}".html_safe, organization_person_path(@organization,p) %></strong></span>
+          <% if p.class_of %>
+            <span> (Class of <%= p.class_of %>)</span>
+          <% end %>
+              <ul>
+                <% p.records.each do |r| %>
+                  <li><%= r.sport.titleize %></li>
+                <% end %>
+              </ul>
+        </div>
+        <div class = "col-xs-6 col-md-5 col-md-offset-1 text-right">
+          <p><%= image_tag(p.photo_url, :class => "img-responsive") %></p>
+        </div>
+      </div>
+
+        <% end %>
+    </div>
       <% end %>
-    </ul>
-    </div>
-    <div class = "col-md-3">
-      <p><%= image_tag(p.photo_url, :class => "img-responsive") %></p>
-    </div>
-    <% end %>
-  </div>
+<br><br><br><br>
 </div>
