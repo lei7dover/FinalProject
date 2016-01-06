@@ -49,7 +49,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = Person.find(params[:id])
+    @person = Person.friendly.find(params[:id])
     #  Rails.logger.info @person.records
     #  Rails.logger.info @person.records.count
     if @person.records.count == 0
@@ -65,7 +65,7 @@ class PeopleController < ApplicationController
     else
     @organization = Organization.friendly.find(params[:organization_id])
     end
-    @person= Person.find(params[:id])
+    @person= Person.friendly.find(params[:id])
     if @person.update(person_params)
       redirect_to organization_person_path(@organization, @person)
     else
@@ -79,18 +79,19 @@ class PeopleController < ApplicationController
     else
     @organization = Organization.friendly.find(params[:organization_id])
     end
-    @person= Person.find(params[:id])
+    @person= Person.friendly.find(params[:id])
     @people= Person.all
     @records = Record.all
   end
 
   def destroy
-    @person= Person.find(params[:id])
+    @person= Person.friendly.find(params[:id])
     @person.destroy
     respond_to do |format|
       format.html { redirect_to organization_people_path, [:alert]=> 'Person was successfully destroyed.' }
     end
   end
+
 
   private
 
