@@ -100,15 +100,19 @@
                           <p class = "navbar-text navbar-right" > <%= @current_user.name.titleize %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %>
                         </p>
                           <% if params[:action] != "new" %>
+                          <% if @organization %>
                         <p class = "navbar-text navbar-right" > <%= link_to "Add Person & Record", new_organization_person_path(@organization) %>
                       </p>
+                      <% end %>
                       <% end %>
                       <% if @organization == nil %>
                       <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
                     </p>
                     <% end %>
+                    <% if @organization %>
                     <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@organization) %>
                   </p>
+                  <% end %>
                           <% else %>
                           <% if params[:controller] == "organizations" && params[:action] == "index" %>
                         <p class = "navbar-text navbar-right">
