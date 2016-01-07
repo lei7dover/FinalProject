@@ -26,12 +26,16 @@ class Person < ActiveRecord::Base
   scope :people_class_of_pluck, -> {where("people.class_of IS NOT NULL").pluck("Distinct people.class_of").sort}
   scope :people_class_of_filter, -> (class_of) { where("people.class_of" => class_of) }
 
-  scope :records_all_state_1st_team_pluck, -> {joins(:records).pluck("Distinct records.all_state_1st_team")}
-  #scope :records_all_state_1st_team_filter, -> (true) { where("records.all_state_1st_team" => true) }
 
-  #scope :records_all_state_2nd_team, -> (true) { where("records.all_state_2nd_team" => true) }
-  #scope :records_all_state_3rd_team, -> (true) { where("records.all_state_3rd_team" => true) }
-  #scope :records_hall_of_fame, -> (true) { where("records.hall_of_fame" => true) }
+  scope :records_all_state_1st_team_filter, -> (xyz) { joins(:records).where("records.all_state_1st_team" => xyz) }
+
+
+  scope :records_all_state_2nd_team_filter, -> (xyz) { joins(:records).where("records.all_state_2nd_team" => xyz) }
+
+
+  scope :records_all_state_3rd_team_filter, ->  (xyz) { joins(:records).where("records.all_state_3rd_team" => xyz) }
+
+  scope :records_hall_of_fame_filter, -> (xyz) { joins(:records).where("records.hall_of_fame" => xyz) }
 
 
 end

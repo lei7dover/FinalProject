@@ -1,8 +1,8 @@
 <div class = "container">
   <div class="row text-center">
     <h3>Search TrophyCase</h3><br>
-      <div class="col-xs-12 col-md-4">
-          <!--<a class="btn btn-default btn-success " href="/people">By Sport</a>-->
+      <div class="col-xs-12 col-md-3">
+
           <div class="dropdown">
             <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <strong class = "opt">Sport</strong>
@@ -18,22 +18,25 @@
       </div>
 
       <!-- /.col-md-4 -->
-      <!--<div class="col-xs-12 col-md-3">-->
-          <!--<a class="btn btn-default btn-success " href="/people">Achievements</a>-->
-          <!--<div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Achievements
+      <div class="col-xs-12 col-md-3">
+
+          <div class="dropdown">
+            <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <strong class = "opt">Achievements</strong>
               <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <%@organization.people.records_all_state_1st_team_pluck.each do |achievements|%>
-              <li><%=link_to achievements, organization_people_path(@organization, :records_all_state_1st_team_filter => achievements) %> </li>
-              <% end %>
+              <ul class="col-xs-12 col-md-12 dropdown-menu" aria-labelledby="dropdownMenu1">
+
+              <li><%=link_to "Hall of Fame", organization_people_path(@organization, :records_hall_of_fame_filter => 1) %> </li>
+              <li><%=link_to "All State 1st Team", organization_people_path(@organization, :records_all_state_1st_team_filter => 1) %> </li>
+              <li><%=link_to "All State 2nd Team", organization_people_path(@organization, :records_all_state_2nd_team_filter => 1) %> </li>
+              <li><%=link_to "All State 3rd Team", organization_people_path(@organization, :records_all_state_3rd_team_filter => 1) %></li>
+
             </ul>
-          </div>-->
-      <!--</div>-->
+          </div>
+        </div>
       <!-- /.col-md-4 -->
-      <div class="col-xs-12 col-md-4">
+      <div class="col-xs-12 col-md-3">
         <div class="dropdown">
           <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <strong class = "opt">Class of (Year)</strong>
@@ -49,8 +52,8 @@
         </div>
       </div>
       <!-- /.col-md-4 -->
-      <div class="col-xs-12 col-md-4">
-          <!--<a class="btn btn-default btn-success" href="/people">Last Name A-Z</a>-->
+      <div class="col-xs-12 col-md-3">
+
           <div class="dropdown">
             <button class="col-xs-12 col-md-12 btn btn-inverse dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <strong class= "opt">Last Name</strong>
