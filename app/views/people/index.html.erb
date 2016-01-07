@@ -89,7 +89,7 @@
               </ul>
         </div>
         <div class = "col-xs-6 col-md-5 col-md-offset-1 text-right">
-          <p><%= image_tag(p.photo_url, :class => "img-responsive indexphoto") %></p>
+          <p><%= link_to attachment_image_tag(p, :photo,:fit, 300,300, :class => "img-responsive indexphoto"), organization_person_path(@organization,p) %></p>
         </div>
       </div>
 

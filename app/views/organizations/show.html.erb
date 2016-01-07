@@ -2,7 +2,7 @@
 
     <!-- Heading Row -->
     <div class="row">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-5">
               <%= image_tag(@organization.org_photo_url, :class => "img-responsive center-block") %>
         </div>
 
@@ -49,22 +49,6 @@
               </ul>
             </div>
         </div>
-
-        <!-- /.col-md-4 -->
-        <!--<div class="col-xs-12 col-md-3">-->
-            <!--<a class="btn btn-default btn-success " href="/people">Achievements</a>-->
-            <!--<div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Achievements
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <%@organization.people.records_sport_pluck.each do |achievements|%>
-                <li><%=link_to achievements, organization_people_path(@organization) %> </li>
-                <% end %>
-              </ul>
-            </div>
-        </div>-->
         <!-- /.col-md-4 -->
         <div class="col-xs-12 col-md-4">
             <!--<a class="btn btn-default btn-success" href="/people">By Year</a>-->
@@ -100,5 +84,7 @@
         <!-- /.col-md-4 -->
     </div><br><br>
     <!-- /.row -->
+    <div class = "row">
+    </div>
 </div><br><br><br><br><br>
 </div>
