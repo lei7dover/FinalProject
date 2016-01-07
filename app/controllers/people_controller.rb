@@ -4,6 +4,10 @@ class PeopleController < ApplicationController
   has_scope :records_sport_filter
   has_scope :people_last_name_filter
   has_scope :people_class_of_filter
+  has_scope :records_all_state_1st_team_filter
+  has_scope :records_all_state_2nd_team_filter
+  has_scope :records_all_state_3rd_team_filter
+  has_scope :records_hall_of_fame_filter
   has_scope :by_organization_filter, :as => :organization_id
 
   def index
