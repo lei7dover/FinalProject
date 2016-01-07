@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :user_sessions
-  resources :records
   #resources :people, only: [:new, :create, :edit, :update, :delete, :show]
   resources :organizations do
     #get 'people' => 'people#index'

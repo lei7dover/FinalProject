@@ -6,39 +6,20 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
     if current_user
        if current_user.organization
-          @organization = Organization.friendly.find_by user_id: @current_user.id
+          @organization = current_user.organization
           render :show
        end
     end
-    #if @organization == nil
-      Rails.logger.info "organization.nil"
-      #@organization = Organization.new
-    #end
-    #if current_user
-    #  @organization= current_user.organization
-      #Rails.logger.info current_user
-    #else
-      #@organization= Organization.new
-    #end
     @people = Person.all
   end
 
   def show
-    #if @organization == nil
-      #@organization = Organization.new
-    #end
-      #if current_user
-      #@organization= current_user.organization
-      #else
-      #@organization= Organization.new
-      #end
       if current_user
-    @organization= Organization.friendly.find_by user_id: @current_user.id
+        @organization= current_user.organization
       else
         @organization = Organization.friendly.find(params[:id])
       end
     @people = Person.all
-    #@organizations= Organization.all
   end
 
   def new
@@ -46,22 +27,21 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization=Organization.new(organization_params)
-    #@organization = current_user.organization
+    @organization=current_user.organization.new(organization_params)
+
     @organization.user_id = current_user.id
     if @organization.save
-    #
       redirect_to @organization
     end
   end
 
   def edit
-    @organization= Organization.friendly.find_by user_id: @current_user.id
+    @organization= current_user.organization
     render :new
   end
 
   def update
-    @organization= Organization.friendly.find(params[:id])
+    @organization= current_user.organization
     if @organization.update(organization_params)
       redirect_to @organization
     else
@@ -70,9 +50,6 @@ class OrganizationsController < ApplicationController
   end
 
   private
-  def set_org
-    @organization=Organization.friendly.find(params[:id])
-  end
 
   def organization_params
   params.require(:organization).permit(:logo, :street, :city, :state, :zip, :name, :phone_number, :org_photo)
