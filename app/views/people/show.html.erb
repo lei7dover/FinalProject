@@ -17,7 +17,7 @@
       <% @person.records.each do |r| %>
       <ul>
 
-          <p class = "sport"><strong> <%= r.sport.titleize %></strong></p>
+          <p class = "sport"><strong> <%= link_to r.sport.titleize, organization_people_path(@organization, :records_sport_filter => r.sport) %></strong></p>
 
         <% if r.bio %>
 
@@ -57,15 +57,16 @@
     </div>
     <br><br>
       <div class = "col-xs-10 col-md-5">
-      <%= image_tag(@person.photo_url, class: "img-responsive showphoto") %>
+      <%= attachment_image_tag(@person, :photo, :fit, 600,600, class: "img-responsive showphoto") %>
       </div>
   </div>
   <hr>
       <div class = "row">
-        <div class = "col-xs-12 col-md-10 icons">
-          <div class = "col-xs-3 col-md-2">
-            <div class="fb-share-button" data-href="<%=request.fullpath%>" data-layout="button"></div>
+        <div class = "col-xs-12 col-md-12 icons">
+          <div class = "col-xs-3 col-md-2 ">
+            <span><%= link_to '<h4 class="glyphicon glyphicon-chevron-left">Back</h4>'.html_safe, :back %></span>
           </div>
+
       <% if current_user %>
           <div class = "col-xs-3 col-md-2">
             <span><%= link_to '<h2 class="glyphicon glyphicon-edit"></h2>'.html_safe, edit_organization_person_path(@organization,@person) %></span>
@@ -74,9 +75,9 @@
             <span><%= link_to '<h2 class="glyphicon glyphicon-trash"></h2>'.html_safe, organization_person_path(@organization,@person), method: :delete, data: { confirm: 'Are you sure?' } %></span>
           </div>
       <% end %>
-          <div class = "col-xs-3 col-md-2 pull-right">
-            <span><%= link_to '<h4 class="glyphicon glyphicon-chevron-left">Back</h4>'.html_safe, :back %></span>
-          </div>
+      <div class = "col-xs-3 col-md-2 pull-right">
+        <div class="fb-share-button" data-href="<%=request.fullpath%>" data-layout="button"></div>
+      </div>
     </div>
 
   </div><br>

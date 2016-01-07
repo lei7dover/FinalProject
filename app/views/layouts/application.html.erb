@@ -109,7 +109,7 @@
                       <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
                     </p>
                     <% end %>
-                    <% if @organization.try :id %> 
+                    <% if @organization.try :id %>
                     <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@organization) %>
                   </p>
                   <% end %>
@@ -120,10 +120,12 @@
                         </p>
                         <p class = "navbar-text navbar-right">
                           <%= link_to "Admin Sign Up", new_user_path %>
-                          <% end %>
                         </p>
+                          <% else %>
+                            <p class = "navbar-text navbar-right"> <%= link_to "About TrophyCase", organizations_path %> </p>
+                          <% end %>
                         <% end %>
-                        <p class = "navbar-text navbar-left">Copyright &copy; TrophyCase 2015, All Rights Reserved</p>
+                        <p class = "navbar-text navbar-left">Copyright &copy; <%= link_to "TrophyCase", organizations_path %> 2015, All Rights Reserved</p>
                       </div>
                     </nav>
                 </div>
