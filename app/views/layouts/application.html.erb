@@ -109,7 +109,7 @@
                       <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
                     </p>
                     <% end %>
-                    <% if @organization %>
+                    <% unless @organization.nil %>
                     <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@organization) %>
                   </p>
                   <% end %>
