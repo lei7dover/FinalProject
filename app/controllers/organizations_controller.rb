@@ -27,7 +27,7 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization=current_user.organization.new(organization_params)
+    @organization=Organization.new(organization_params)
 
     @organization.user_id = current_user.id
     if @organization.save

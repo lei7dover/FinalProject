@@ -34,6 +34,7 @@
           <span><strong>Participated: </strong><%= r.first_active_year%>-<%= r.last_active_year%></span>
         </li>
         <% end %>
+            <% if r.hall_of_fame == 1 || r.all_state_1st_team ==  1 || r.all_state_2nd_team == 1 || r.all_state_3rd_team == 1  %>
         <li>
           <span><strong>Achievements:</strong>
             <ul>
@@ -52,6 +53,7 @@
           </ul>
           </span>
         </li>
+        <% end %>
       </ul>
       <% end %>
     </div>

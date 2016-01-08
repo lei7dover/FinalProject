@@ -73,7 +73,7 @@
 </div>
 <div class = "container-fluid cardholder">
   <% if @people.blank? %>
-    <h4>There are no people that match your search <%= params[:search] %>.</h4>
+    <h4><i class="fa fa-times-circle"></i> There are no people that match your search <%= params[:search] %>.</h4>
   <% end %>
 
 <% @people.each_slice(2) do |row| %>
