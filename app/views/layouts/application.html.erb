@@ -41,24 +41,14 @@
 
                 </button>
                   <ul>
-                     <% if @organization %>
-                        <% if @organization.logo_url != nil %>
+                     <% if @organization && @organization.logo_url != nil %>
                       <%= link_to attachment_image_tag(@organization, :logo, :fit, 60, 50,:class => "navbar-brand"), organization_path(@organization) %>
-                        <% else %>
-                      <%= link_to " ",organizations_path, :class => " navbar-brand" %>
-                        <% end %>
-                      <% else %>
-                      <%= link_to " ",organizations_path, :class => " navbar-brand" %>
                     <% end %>
                     <ul id= "title">
-                      <% if @organization %>
-                        <% if @organization.id != nil %>
-                          <%= link_to "<h2>TrophyCase</h2>".html_safe, organization_path(@organization) %>
-                        <% else %>
-                          <%= link_to "<h2>TrophyCase</h2>".html_safe, organizations_path %>
-                       <% end %>
+                      <% if @organization && @organization.id != nil  %>
+                          <%= link_to '<h2>TrophyCase <i class="fa fa-trophy"></i></h2>'.html_safe, organization_path(@organization) %>
                       <% else %>
-                        <%= link_to "<h2>TrophyCase</h2>".html_safe, organizations_path %>
+                        <%= link_to '<h2>TrophyCase <i class="fa fa-trophy"></i></h2>'.html_safe, organizations_path %>
                       <% end %>
                     </ul>
                   </ul>
@@ -68,17 +58,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                  <% if @organization != nil %>
-                  <% if params[:action] != "new" %>
+                  <% if @organization != nil && params[:action] != "new" %>
                       <%= form_tag(organization_people_path(@organization), :method => "get", id: "search-form", :class => "form-inline") do %>
-
-
-                      <%= text_field_tag :search, params[:search], placeholder: "Search People" , :class => "form-control" %>
-                      <%= button_tag "", type: 'submit', class: "btn btn-inverse glyphicon glyphicon-search" %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search People" , :class => "form-control" %>
+                        <%= button_tag "", type: 'submit', class: "btn btn-inverse glyphicon glyphicon-search" %>
                       <% end %>
-                      <% end %>
-                      <% end %>
-
+                  <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -97,33 +82,33 @@
                       <div class= "container">
 
                           <% if @current_user %>
-                          <p class = "navbar-text navbar-right" > <%= @current_user.name.titleize %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %>
-                        </p>
-                          <% if params[:action] != "new" %>
-                          <% if @organization %>
-                        <p class = "navbar-text navbar-right" > <%= link_to "Add Person & Record", new_organization_person_path(@organization) %>
-                      </p>
-                      <% end %>
-                      <% end %>
-                      <% if @organization == nil %>
-                      <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
-                    </p>
-                    <% end %>
-                    <% if @organization.try :id %>
-                    <p class = "navbar-text navbar-right" > <%= link_to "Edit your Organization", edit_organization_path(@organization) %>
-                  </p>
-                  <% end %>
+                            <p class = "navbar-text navbar-right" > <%= @current_user.name.titleize %>, <%= link_to "Log Out", user_session_path(@current_user),method: :delete %> <i class="fa fa-sign-out"></i>
+                            </p>
+                              <% if params[:action] != "new"  && @organization %>
+                                  <p class = "navbar-text navbar-right" ><i class="fa fa-user"></i> <%= link_to "Add Person & Record", new_organization_person_path(@organization) %>
+                                  </p>
+                              <% end %>
+                              <% unless @organization %>
+                                <p class = "navbar-text navbar-right" > <%= link_to "Add your Organization", new_organization_path %>
+                                </p>
+                              <% end %>
+                              <% if @organization.try :id %>
+                                <p class = "navbar-text navbar-right" ><i class="fa fa-pencil-square-o"></i> <%= link_to "Edit your Organization", edit_organization_path(@organization) %>
+                                </p>
+                              <% end %>
                           <% else %>
-                          <% if params[:controller] == "organizations" && params[:action] == "index" %>
-                        <p class = "navbar-text navbar-right">
-                          <%= link_to "Admin Log In", new_user_session_path%>
-                        </p>
-                        <p class = "navbar-text navbar-right">
-                          <%= link_to "Admin Sign Up", new_user_path %>
-                        </p>
-                          <% else %>
-                            <p class = "navbar-text navbar-right"> <%= link_to "About TrophyCase", organizations_path %> </p>
-                          <% end %>
+                            <% if params[:controller] == "organizations" && params[:action] == "index" %>
+                              <p class = "navbar-text navbar-right">
+                                <i class="fa fa-sign-in"></i>
+                                <%= link_to "Admin Log In", new_user_session_path%>
+                              </p>
+                              <p class = "navbar-text navbar-right">
+                                <i class="fa fa-star"></i>
+                                <%= link_to "Admin Sign Up", new_user_path %>
+                              </p>
+                            <% else %>
+                              <p class = "navbar-text navbar-right"> <i class="fa fa-info-circle"></i> <%= link_to "About TrophyCase", organizations_path %> </p>
+                            <% end %>
                         <% end %>
                         <p class = "navbar-text navbar-left">Copyright &copy; <%= link_to "TrophyCase", organizations_path %> 2015, All Rights Reserved</p>
                       </div>

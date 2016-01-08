@@ -50,9 +50,9 @@
           <% @organizations.each do |organization| %>
         <div class="col-md-4">
             <h4 class = "org-names-index"><%=link_to organization.name, organization_path(organization) %></h4>
-            <p><%=organization.street %></p>
+            <p><i class="fa fa-map-marker"></i> <%=organization.street %></p>
             <p> <%= organization.city.titleize %>, <%= organization.state.titleize %> <%= organization.zip %></p>
-            <p><%= organization.phone_number %></p>
+            <p><i class="fa fa-phone-square"></i> <%= organization.phone_number %></p>
         </div>
         <% end %>
     </div>
